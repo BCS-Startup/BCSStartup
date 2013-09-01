@@ -1,22 +1,22 @@
 <?php
 
 // mysql hostname
-$db_host = "127.0.0.1";
+$db_host = "";
 
 // database name
-$db_name = "bcs-startup";
+$db_name = "";
 
 // database user name
-$db_user = "root";
+$db_user = "";
 
 // database password
 $db_pass = "";
 
 // admin username
-$admin_user = "admin";
+$admin_user = "";
 
 // admin password
-$admin_pass = "startupbcs12";
+$admin_pass = "";
 
 
 // StartupGenome.com integration (optional)
