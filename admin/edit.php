@@ -58,12 +58,12 @@ if($task == "doedit") {
       <label class="control-label" for="">Type</label>
       <div class="controls">
         <select class="input input-xlarge" name="type">
-          <option<? if($place[type] == "startup") {?> selected="selected"<? } ?>>Startup</option>
-          <option<? if($place[type] == "accelerator") {?> selected="selected"<? } ?>>Accelerator</option>
-          <option<? if($place[type] == "consulting") {?> selected="selected"<? } ?>>Consulting</option>
-          <option<? if($place[type] == "investor") {?> selected="selected"<? } ?>>Investor</option>
-          <option<? if($place[type] == "design") {?> selected="selected"<? } ?>>Dev. & Design</option>
-          <option<? if($place[type] == "attorney") {?> selected="selected"<? } ?>>Attorney</option>
+          <option<? if($place[type] == "startup") {?> selected="selected"<? } ?>>startup</option>
+          <option<? if($place[type] == "accelerator") {?> selected="selected"<? } ?>>accelerator</option>
+          <option<? if($place[type] == "consulting") {?> selected="selected"<? } ?>>consulting</option>
+          <option<? if($place[type] == "investor") {?> selected="selected"<? } ?>>investor</option>
+          <option<? if($place[type] == "design") {?> selected="selected"<? } ?>>design</option>
+          <option<? if($place[type] == "attorney") {?> selected="selected"<? } ?>>attorney</option>
         </select>
       </div>
     </div>

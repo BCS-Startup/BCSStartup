@@ -462,7 +462,7 @@ include_once "header.php";
         </li>
         <li class="attribution">
           <!-- per our license, you may not remove this line -->
-          <?php $attribution ?>
+          <?php echo $attribution ?>
         </li>
       </ul>
     </div>
@@ -530,7 +530,7 @@ include_once "header.php";
               </div>
             </div>
             <div class="control-group">
-              <label class="control-label" for="input01">Company Type</label>
+              <label class="control-label" for="input01">Type</label>
               <div class="controls">
                 <select name="type" id="add_type" class="input-xlarge">
                   <option value="startup">Startup</option>
