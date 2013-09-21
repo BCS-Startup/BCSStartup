@@ -15,8 +15,11 @@ include_once "header.php";
     https://github.com/abenzer/represent-map
     -->
     <title>BCS Startup</title>
+    <meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta charset="UTF-8">
+    
     <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700|Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link href="./bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
     <link href="./bootstrap/css/bootstrap-responsive.css" rel="stylesheet" type="text/css" />
@@ -176,24 +179,31 @@ include_once "header.php";
               );
           $marker_id = 0;
           foreach($types as $type) {
-            $places = mysql_query("SELECT * FROM places WHERE approved='1' AND type='$type[0]' ORDER BY title");
-            $places_total = mysql_num_rows($places);
-            while($place = mysql_fetch_assoc($places)) {
-              $place[title] = htmlspecialchars_decode(addslashes(htmlspecialchars($place[title])));
-              $place[description] = htmlspecialchars_decode(addslashes(htmlspecialchars($place[description])));
-              $place[uri] = addslashes(htmlspecialchars($place[uri]));
-              $place[address] = htmlspecialchars_decode(addslashes(htmlspecialchars($place[address])));
-              echo "
-                markers.push(['".$place[title]."', '".$place[type]."', '".$place[lat]."', '".$place[lng]."', '".$place[description]."', '".$place[uri]."', '".$place[address]."']); 
-                markerTitles[".$marker_id."] = '".$place[title]."';
-              "; 
-              $count[$place[type]]++;
-              $marker_id++;
-            }
+			  	//ssk
+				if($type[0] != "event") { 
+				$places = mysql_query("SELECT * FROM places WHERE approved='1' AND type='$type[0]' ORDER BY title");
+				}
+				else {
+				$places = mysql_query("SELECT * FROM places WHERE approved='1' AND type='$type[0]' ");
+				}//ssk
+				$places_total = mysql_num_rows($places);
+				while($place = mysql_fetch_assoc($places)) {
+				  $place[title] = htmlspecialchars_decode(addslashes(htmlspecialchars($place[title])));
+				  $place[description] = htmlspecialchars_decode(addslashes(htmlspecialchars($place[description])));
+				  $place[uri] = addslashes(htmlspecialchars($place[uri]));
+				  $place[address] = htmlspecialchars_decode(addslashes(htmlspecialchars($place[address])));
+				  echo "
+					markers.push(['".$place[title]."', '".$place[type]."', '".$place[lat]."', '".$place[lng]."', '".$place[description]."', '".$place[uri]."', '".$place[address]."']); 
+					markerTitles[".$marker_id."] = '".$place[title]."';
+				  "; 
+				  $count[$place[type]]++;
+				  $marker_id++;
+				}
+			
           } 
           if($show_events == true) {
             $place[type] = "event";
-            $events = mysql_query("SELECT * FROM events WHERE start_date > ".time()." AND start_date < ".(time()+4838400)." ORDER BY id DESC");
+            $events = mysql_query("SELECT * FROM events WHERE start_date > ".time()." AND start_date < ".(time()+4838400)." ");
             $events_total = mysql_num_rows($events);
             while($event = mysql_fetch_assoc($events)) {
               $event[title] = htmlspecialchars_decode(addslashes(htmlspecialchars($event[title])));
@@ -431,7 +441,14 @@ include_once "header.php";
             if($type[0] != "event") {
               $markers = mysql_query("SELECT * FROM places WHERE approved='1' AND type='$type[0]' ORDER BY title");
             } else {
-              $markers = mysql_query("SELECT * FROM events WHERE start_date > ".time()." AND start_date < ".(time()+4838400)." ORDER BY id DESC");
+              $markers = mysql_query("select id as places_id, approved, title, type, lat, lng, address, uri, description, sector, owner_name, owner_email, sg_organization_id, null as event_id, null as id_eventbrite, null as created, null as organizer_name, null as start_date, null as end_date
+from places
+where approved='1' AND type='$type[0]'
+UNION
+select null as places_id,null as approved, title,null as type, lat, lng, address, uri,null as description,null as sector,null as owner_name,null as owner_email,null as sg_organization_id, id as event_id, id_eventbrite, created, organizer_name, start_date, end_date
+from events
+WHERE start_date >  ".time()." AND start_date <".(time()+4838400)." ");
+			 //sarvesh
             }
             $markers_total = mysql_num_rows($markers);
             echo "
@@ -539,6 +556,7 @@ include_once "header.php";
                   <option value="investor">VC/Angel</option>
                   <option value="design">Dev. & Design</option>
                   <option value="attorney">Attorney</option>
+                  <option value="event">Event</option>
                 </select>
               </div>
             </div>

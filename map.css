@@ -22,6 +22,7 @@ img
 form
 {
   margin-bottom: 0px;
+  overflow-y:auto;
 }
 
 /* google maps */
@@ -410,7 +411,8 @@ html, body, #map_canvas
 /* add marker modal */
 #modal_add
 {
-  margin-top: -22%;
+  margin-top: -300px;
+   
 }
 #modal_add .modal-body
 {
