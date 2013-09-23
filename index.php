@@ -30,7 +30,7 @@ include_once "header.php";
     <script src="./bootstrap/js/bootstrap-typeahead.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
     <script type="text/javascript" src="./scripts/label.js"></script>
-    
+   
     <script type="text/javascript">
       var map;
       var infowindow = null;
@@ -39,6 +39,7 @@ include_once "header.php";
       var highestZIndex = 0;  
       var agent = "default";
       var zoomControl = true;
+
 
 
       // detect browser agent
@@ -203,6 +204,7 @@ include_once "header.php";
           } 
           if($show_events == true) {
             $place[type] = "event";
+			//ssk
             $events = mysql_query("SELECT * FROM events WHERE start_date > ".time()." AND start_date < ".(time()+4838400)." ");
             $events_total = mysql_num_rows($events);
             while($event = mysql_fetch_assoc($events)) {
@@ -448,7 +450,7 @@ UNION
 select null as places_id,null as approved, title,null as type, lat, lng, address, uri,null as description,null as sector,null as owner_name,null as owner_email,null as sg_organization_id, id as event_id, id_eventbrite, created, organizer_name, start_date, end_date
 from events
 WHERE start_date >  ".time()." AND start_date <".(time()+4838400)." ");
-			 //sarvesh
+			 //ssk
             }
             $markers_total = mysql_num_rows($markers);
             echo "
@@ -477,6 +479,35 @@ WHERE start_date >  ".time()." AND start_date <".(time()+4838400)." ");
           This map was made to connect and promote the Bryan/College Station startup community.
           Let's put BCS on the map!
         </li>
+        <!--ssk-->
+        <li>
+        <div class= "social_media_links">
+        	<a href="https://www.facebook.com/bcsstartup"> <img src="./images/social_icons/facebook-icon.png" width="42" height="42" border="0" alt="Go to our Facebook page" /></a>   
+            <a href="https://www.twitter.com/bcsstartup"> <img src="./images/social_icons/twitter-icon.png" width="42" height="42" border="0" alt="Go to our Twitter page" /></a> 
+            <a href="https://plus.google.com/u/0/118015781636972203718/posts"> <img src="./images/social_icons/gplus-icon.png" width="42" height="42" border="0" alt="Go to our Google Plus page" /></a> 
+            <a href="https://www.linkedin.com/company/bcs-startup"> <img src="./images/social_icons/linkedin-icon.png" width="42" height="42" border="0" alt="Go to our LinkedIn page" /></a> 
+         </div>   
+        </li>
+        
+        <li>
+                <!-- Begin MailChimp Signup Form -->
+       
+        <style type="text/css">
+            #mc_embed_signup{ clear:left; font:14px Helvetica,Arial,sans-serif; margin-left: 8px; margin-top: 14px;}
+            /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
+               We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+        </style>
+        <div id="mc_embed_signup">
+        	<form action="http://bcsstartup.us7.list-manage.com/subscribe/post?u=532b75419f2aaa766cd47b867&amp;id=92cc429110" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+            
+            <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Please enter email address" required>
+            <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn"></div>
+       		</form>
+        </div>
+        
+        <!--End mc_embed_signup-->
+        </li>
+        
         <li class="attribution">
           <!-- per our license, you may not remove this line -->
           <?php echo $attribution ?>

@@ -182,6 +182,19 @@ html, body, #map_canvas
   background-color: #fff;
   width: 250px;
 }
+
+/*ssk*/
+.menu .social_media_links
+{
+	margin-left: 9px;
+	margin-top: 12px;
+}
+
+.menu .social_media_links a
+{
+	margin-right: 7px;
+}
+
 .menu .blurb,
 .menu .attribution
 {
