@@ -31,6 +31,10 @@ include_once "header.php";
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
     <script type="text/javascript" src="./scripts/label.js"></script>
    
+    <!--ssk-->
+   	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="/favicon.ico" type="image/x-icon">
+   
     <script type="text/javascript">
       var map;
       var infowindow = null;
