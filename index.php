@@ -387,7 +387,7 @@ include_once "header.php";
     <!-- display error overlay if something went wrong -->
     <?php echo $error; ?>
     
-
+	<?php include_once("analyticstracking.php") ?>
     
     <!-- google map -->
     <div id="map_canvas"></div>
@@ -494,7 +494,7 @@ WHERE start_date >  ".time()." AND start_date <".(time()+4838400)." ");
         </li>
         
         <li>
-                <!-- Begin MailChimp Signup Form -->
+                <!-- Begin MailChimp Signup Form ssk-->
        
         <style type="text/css">
             #mc_embed_signup{ clear:left; font:14px Helvetica,Arial,sans-serif; margin-left: 8px; margin-top: 14px;}
@@ -504,7 +504,7 @@ WHERE start_date >  ".time()." AND start_date <".(time()+4838400)." ");
         <div id="mc_embed_signup">
         	<form action="http://bcsstartup.us7.list-manage.com/subscribe/post?u=532b75419f2aaa766cd47b867&amp;id=92cc429110" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
             
-            <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Please enter email address" required>
+            <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Enter email for event reminders" required>
             <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn"></div>
        		</form>
         </div>
